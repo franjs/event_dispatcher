@@ -42,123 +42,70 @@
 
 				<!-- Portada -->
                 <section>
-					<h1>Teleprocesos</h1>
-                    <h2>IPv4 - IPv6 - Arquitectura IP sobre ATM</h2>
-					<h3>Integrantes:</h3>
-                    <ul>
-                        <li>Francisco Silva</li>
-                        <li>Jaime Martinez</li>
-                        <li>Deivis Salinas</li>
-                    </ul>
+					<h1>Symfony</h1>
+                    <h2>The EventDispatcher Component</h2>
 				</section>
 
-                <!-- IPv4 -->
+                <!-- Instalación -->
                 <section>
-				    <section>
-					    <img class="image" src="imagenes/ipv4.png" width="380" height="250">
-                        <p style="text-align: justify">
-                            IPv4 es la versión 4 del Protocolo de Internet (IP o Inernet Protocol) y constituye la primera
-                            versión de IP que es implementada de forma extensiva. IPv4 es el principal protocolo utilizado
-                            en el Nivel de Red del Modelo TCP/IP para Internet.
-                        </p>
-				    </section>
-                    <section>
-                        <p>
-                            El propósito principal de <strong>IP</strong> es proveer una dirección única a cada sistema para asegurar que
-                            una computadora en Internet pueda identificar a otra.
-                        </p>
-                    </section>
-                    <section>
-                        <h2>Direcciones IPv4</h2>
-                        <p>
-                            IPv4 utiliza direcciones de 32 bits (4 bytes) que limita el número de direcciones posibles a
-                            utilizar a 4,294,967,295 direcciones únicas.
-                        </p>
-                    </section>
-                    <section>
-                        <h2>Direcciones IPv4</h2>
-                        <p style="text-align: justify">
-                            Las direcciones IP se pueden expresar como números de notación decimal: se dividen los 32 bits
-                            de la dirección en cuatro octetos. El valor decimal de cada octeto está comprendido en el
-                            intervalo de 0 a 255 [el número binario de 8 bits más alto es 11111111 y esos bits, de derecha
-                            a izquierda, tienen valores decimales de 1, 2, 4, 8, 16, 32, 64 y 128, lo que suma 255].
-                        </p>
-                    </section>
-                    <section>
-                        <img class="image" src="imagenes/dir_ip.jpg">
-                        <h3>192 . 72 . 5 . 1</h3>
-                    </section>
-                    <section>
-                        <h2>Direcciones Reservadas</h2>
-                        <p style="text-align: justify">
-                            Muchas de estas direcciones están reservadas para propósitos especiales como redes privadas, Multidifusión
-                            (Multicast), etc. Debido a esto se reduce el número de direcciones IP que realmente se pueden
-                            utilizar, es esto mismo lo que ha impulsado la creación de IPv6 como reemplazo eventual dentro
-                            de algunos años para IPv4.
-                        </p>
-                    </section>
-                    <section>
-                        <h2>Direcciones Reservadas</h2>
-                        <ul>
-                            <li>Red Privada: 10.0.0.0/8</li>
-                            <li>Anfitrión local (localhost): 127.0.0.0/8</li>
-                            <li>Red de pruebas 1: 192.0.2.0/24</li>
-                            <li>Difusiones (Broadcast): 255.255.255.255</li>
-                            <li>Multidifusión (Multicast, antes red Clase D): 224.0.0.0/4</li>
-                        </ul>
-                    </section>
-                    <section id="fragments">
-                        <h2>clases de direcciones ip</h2>
-                        <ul>
-                            <li class="fragment">
-                                <h3>Clase A:</h3> Se asigna el primer octeto para identificar la red, reservando los tres
-                                últimos octetos (24 bits) para que sean asignados a los hosts.
-                            </li>
-                        </ul>
-                    </section>
-                    <section id="fragments">
+				    <section style="margin-top: -160px;">
+					    <h2>Instalación</h2><br>
                         <ul>
                             <li>
-                                <h3>Clase B:</h3>Se asignan los dos primeros octetos para identificar la red, reservando
-                                los dos octetos finales (16 bits) para que sean asignados a los hosts.
-                            </li></br>
-                            <li class="fragment">
-                                <h3>Clase C:</h3> Se asignan los tres primeros octetos para identificar la red, reservando
-                                el octeto final (8 bits) para que sea asignado a los hosts.
+                                Via Composer:  (symfony/event-dispatcher)
+                                <section data-markdown>
+                                    <script type="text/template">
+
+                                        $ composer require symfony/finder
+                                    </script>
+                                    <br>
+                                </section>
                             </li>
+                            <br>
+                            <li>
+                                Usando el Repositorio Git Oficial:
+                                <section data-markdown>
+                                    <script type="text/template">
+
+                                        https://github.com/symfony/EventDispatcher
+                                    </script>
+                                    <br>
+                                </section>
+                            </li>
+                        </ul>
+				    </section>
+                    <section>
+                        <h2>Eventos:</h2><br>
+                        <p style="text-align: left;">Cuando un evento es enviado:</p><br>
+                        <ul>
+                            <li>Nombres unicos.</li>
+                            <li>Pueden ser escuchados por cualquier cantidad de listeners.</li>
+                            <li>Se crea una instancia del evento y se pasa a todos los listeners.</li>
                         </ul>
                     </section>
                     <section>
-                        <img class="image" src="imagenes/clases_redes.gif" width="800" height="275">
-                    </section>
-                </section>
-
-                <!-- IPv6 -->
-                <section>
-                    <section>
-                        <h1>IPv6</h1>
-                        <p style="text-align: justify">
-                            El Internet Protocol version 6 (IPv6) es una versión del protocolo Internet Protocol (IP),
-                            definidaen el RFC 2460 y diseñada para reemplazar a Internet Protocol version 4 (IPv4) RFC 791,
-                            que actualmente está implementado en la gran mayoría de dispositivos que acceden a Internet.
+                        <h2>Convenciones de Nomenclatura</h2><br>
+                        <ul>
+                            <li>Utilizar sólo letras minúsculas, números, puntos y guiones bajos (_) (.).</li>
+                            <li>Nombres de prefijo con un espacio de nombres seguido de un punto.</li>
+                            <li>Terminar los nombres con un verbo que indique la acción que esta en curso.</li>
+                        </ul><br><br>
+                        <p>
+                            Por ejemplo:
+                            <ul>
+                                <li>kernel.response</li>
+                                <li>form.pre_set_data</li>
+                            </ul>
                         </p>
                     </section>
-                    <section>
-                        <img src="imagenes/1.jpg" width="750" height="500">
-                    </section>
-                    <section>
-                        <img src="imagenes/2.png" width="750" height="500">
-                    </section>
+
                 </section>
 
-                <!-- Arquitectura IP sobre ATM -->
+                <!-- Ejemplo -->
                 <section>
-                    <h1>IP sobre ATM</h1>
-                    <p style="text-align: justify">
-                        El Modo de Transferencia Asíncrona  es una tecnología de telecomunicación desarrollada para hacer
-                        frente a la gran demanda de capacidad de transmisión para servicios y aplicaciones
-                    </p>
-                    <img src="imagenes/atm.jpg">
+                    <section>
+                        <h1>Ejemplo</h1>
+                    </section>
                 </section>
 
 			</div>
