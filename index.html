@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Symfony - The EventDispatcher Component</title>
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/moon.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<!-- Portada -->
+                <section>
+					<h1>Teleprocesos</h1>
+                    <h2>IPv4 - IPv6 - Arquitectura IP sobre ATM</h2>
+					<h3>Integrantes:</h3>
+                    <ul>
+                        <li>Francisco Silva</li>
+                        <li>Jaime Martinez</li>
+                        <li>Deivis Salinas</li>
+                    </ul>
+				</section>
+
+                <!-- IPv4 -->
+                <section>
+				    <section>
+					    <img class="image" src="imagenes/ipv4.png" width="380" height="250">
+                        <p style="text-align: justify">
+                            IPv4 es la versión 4 del Protocolo de Internet (IP o Inernet Protocol) y constituye la primera
+                            versión de IP que es implementada de forma extensiva. IPv4 es el principal protocolo utilizado
+                            en el Nivel de Red del Modelo TCP/IP para Internet.
+                        </p>
+				    </section>
+                    <section>
+                        <p>
+                            El propósito principal de <strong>IP</strong> es proveer una dirección única a cada sistema para asegurar que
+                            una computadora en Internet pueda identificar a otra.
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Direcciones IPv4</h2>
+                        <p>
+                            IPv4 utiliza direcciones de 32 bits (4 bytes) que limita el número de direcciones posibles a
+                            utilizar a 4,294,967,295 direcciones únicas.
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Direcciones IPv4</h2>
+                        <p style="text-align: justify">
+                            Las direcciones IP se pueden expresar como números de notación decimal: se dividen los 32 bits
+                            de la dirección en cuatro octetos. El valor decimal de cada octeto está comprendido en el
+                            intervalo de 0 a 255 [el número binario de 8 bits más alto es 11111111 y esos bits, de derecha
+                            a izquierda, tienen valores decimales de 1, 2, 4, 8, 16, 32, 64 y 128, lo que suma 255].
+                        </p>
+                    </section>
+                    <section>
+                        <img class="image" src="imagenes/dir_ip.jpg">
+                        <h3>192 . 72 . 5 . 1</h3>
+                    </section>
+                    <section>
+                        <h2>Direcciones Reservadas</h2>
+                        <p style="text-align: justify">
+                            Muchas de estas direcciones están reservadas para propósitos especiales como redes privadas, Multidifusión
+                            (Multicast), etc. Debido a esto se reduce el número de direcciones IP que realmente se pueden
+                            utilizar, es esto mismo lo que ha impulsado la creación de IPv6 como reemplazo eventual dentro
+                            de algunos años para IPv4.
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Direcciones Reservadas</h2>
+                        <ul>
+                            <li>Red Privada: 10.0.0.0/8</li>
+                            <li>Anfitrión local (localhost): 127.0.0.0/8</li>
+                            <li>Red de pruebas 1: 192.0.2.0/24</li>
+                            <li>Difusiones (Broadcast): 255.255.255.255</li>
+                            <li>Multidifusión (Multicast, antes red Clase D): 224.0.0.0/4</li>
+                        </ul>
+                    </section>
+                    <section id="fragments">
+                        <h2>clases de direcciones ip</h2>
+                        <ul>
+                            <li class="fragment">
+                                <h3>Clase A:</h3> Se asigna el primer octeto para identificar la red, reservando los tres
+                                últimos octetos (24 bits) para que sean asignados a los hosts.
+                            </li>
+                        </ul>
+                    </section>
+                    <section id="fragments">
+                        <ul>
+                            <li>
+                                <h3>Clase B:</h3>Se asignan los dos primeros octetos para identificar la red, reservando
+                                los dos octetos finales (16 bits) para que sean asignados a los hosts.
+                            </li></br>
+                            <li class="fragment">
+                                <h3>Clase C:</h3> Se asignan los tres primeros octetos para identificar la red, reservando
+                                el octeto final (8 bits) para que sea asignado a los hosts.
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <img class="image" src="imagenes/clases_redes.gif" width="800" height="275">
+                    </section>
+                </section>
+
+                <!-- IPv6 -->
+                <section>
+                    <section>
+                        <h1>IPv6</h1>
+                        <p style="text-align: justify">
+                            El Internet Protocol version 6 (IPv6) es una versión del protocolo Internet Protocol (IP),
+                            definidaen el RFC 2460 y diseñada para reemplazar a Internet Protocol version 4 (IPv4) RFC 791,
+                            que actualmente está implementado en la gran mayoría de dispositivos que acceden a Internet.
+                        </p>
+                    </section>
+                    <section>
+                        <img src="imagenes/1.jpg" width="750" height="500">
+                    </section>
+                    <section>
+                        <img src="imagenes/2.png" width="750" height="500">
+                    </section>
+                </section>
+
+                <!-- Arquitectura IP sobre ATM -->
+                <section>
+                    <h1>IP sobre ATM</h1>
+                    <p style="text-align: justify">
+                        El Modo de Transferencia Asíncrona  es una tecnología de telecomunicación desarrollada para hacer
+                        frente a la gran demanda de capacidad de transmisión para servicios y aplicaciones
+                    </p>
+                    <img src="imagenes/atm.jpg">
+                </section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
