@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/event_dispatcher.iml" filepath="$PROJECT_DIR$/.idea/event_dispatcher.iml" />
+      <module fileurl="file:///var/www/event_dispatcher/.idea/event_dispatcher.iml" filepath="/var/www/event_dispatcher/.idea/event_dispatcher.iml" />
     </modules>
   </component>
 </project>
