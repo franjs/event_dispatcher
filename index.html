@@ -40,339 +40,649 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
+				<!-- Portada -->
 				<section>
 					<h1>Symfony</h1>
 					<h3>The Event Dispatcher Component</h3>
 					<p>
-						<small>Francisco Silva / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+						<small>Francisco Silva - <a href="https://github.com/franjs">https://github.com/franjs</a></small>
 					</p>
-				</section>
+					<aside class="notes">
+						<p style="text-align: justify">
+							Este componente permite implementar el Patrón Observador mediante el uso de la clase (EventDispatcher)
+							que contiene a los escuchas de eventos y los llama cuando se dispara algún evento en particular.
+						</p>
 
-				<section>
-					<h2>Hello There</h2>
-					<p>
-						reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation will show you examples of what it can do.
-					</p>
-				</section>
+						<p style="text-align: justify">
+							El Patrón Observador es un patrón de diseño que define una dependencia del tipo uno-a-muchos entre objetos, de manera
+							que cuando uno de los objetos cambia su estado, notifica este cambio a todos los dependientes.
+						</p>
 
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>Slides can be nested inside of each other.</p>
-						<p>Use the <em>Space</em> key to navigate through all slides.</p>
-						<br>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>That's it, time to go back up.</p>
-						<br>
-						<a href="#/2">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
+						<p style="text-align: justify">
+							Gracias a ello, mediante el uso de Observadores (Escuchas de Eventos o Listeners), podemos
+							realizar ciertas tareas en cada etapa de la ejecución de una petición en symfony.
+						</p>
 
-				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slides.com" target="_blank">http://slides.com</a>.
-					</p>
+						<p style="text-align: justify">
+							El potencial que brinda el uso de este patrón, es muy amplio, ya que dá la posibilidad de
+							extender de manera impresionante una funcionalidad, sin tener que modificar el código del
+							proceso que dispara el evento, solo agregando escuchas como para hacer logs, calculos, enviar
+							correos, he infinidad de cosas para un evento particular.
+						</p>
+					</aside>
 				</section>
-
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
-
-				<section>
-					<h2>Touch Optimized</h2>
-					<p>
-						Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
-					</p>
-				</section>
-
+				<!-- Instalación -->
 				<section data-markdown>
 					<script type="text/template">
-						## Markdown support
+						## Instalación
 
-						Write content using inline or external Markdown.
-						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
+						Podemos instalar el componente de 2 formas:
 
 						```
-						<section data-markdown>
-						  ## Markdown support
+						- Usando el repositorio Git oficial:
 
-						  Write content using inline or external Markdown.
-						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-						</section>
+						  (https://github.com/symfony/EventDispatcher).
+
+						- Instalándolo vía Composer (symfony/event-dispatcher en Packagist).
+
 						```
 					</script>
 				</section>
-
 				<section>
-					<section id="fragments">
-						<h2>Fragments</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
-
+					<section>
+						<h2>Usando el Componente</h2>
+					</section>
+					<section>
+						<h3>Eventos:</h3>
+						<p style="text-align: left;">Cuando un evento es enviado:</p>
+						<ul>
+							<li>Nombres unicos.</li>
+							<li>Pueden ser escuchados por cualquier cantidad de listeners.</li>
+							<li>Se crea una instancia de Symfony\Component\EventDispatcher\Event y se pasa a todos los listeners.</li>
+						</ul>
 						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
+							<p style="text-align: justify">
+								Cuando se envía un evento, es identificado por un nombre único.
+							</p>
+							<p style="text-align: justify">
+								Se crea una instancia de la clase event del componente event dispatcher y se le pasa a
+								todos los listeners
+							</p>
 						</aside>
 					</section>
 					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's different types of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-					</section>
-				</section>
-
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=slide#/transitions">Slide</a> -
-						<a href="?transition=convex#/transitions">Convex</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a>
-					</p>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						reveal.js comes with a few themes built in: <br>
-						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
-					</p>
-				</section>
-
-				<section>
-					<section data-background="#dddddd">
-						<h2>Slide Backgrounds</h2>
+						<h3>Convenciones de Nomenclatura</h3>
+						<ul>
+							<li>Utilizar sólo letras minúsculas, números, puntos y guiones bajos (_) (.).</li>
+							<li>Utilizar prefijos seguidos de un punto.</li>
+							<li>Terminar los nombres con un verbo que indique la acción que esta en curso.</li>
+						</ul>
 						<p>
-							Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
+							Por ejemplo:
+						<ul>
+							<li>kernel.response</li>
+							<li>form.pre_set_data</li>
+						</ul>
 						</p>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
+						<aside class="notes">
+							<p style="text-align: justify">
+								Existen unos estandares a la hora de nombrar los eventos.
+							</p>
+							<p style="text-align: justify">
+								Siempre es una buena practica utilizar los estandares.
+							</p>
+						</aside>
 					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
+					<section>
+						<h3>Clase EventDispatcher</h3>
+						<aside class="notes">
+							<p style="text-align: justify">
+								Esta clase es la encargada de contener y llamar a los escuchas cuando se dispara o ejecuta
+								un evento, es a traves de ella, que registraremos y eliminaremos las funciones o los
+								metodos que estarán escuchando eventos, y es con esta misma clase que invocaremos la
+								ejecución de cada evento.
+							</p>
+							<p style="text-align: justify">
+								Como podemos ver:
+							<ul>
+								<li>Primero instanciamos la clase eventDispatcher</li>
+								<li>Luego para registrar nuestro escucha o listener, creamos un objeto de nuestra clase</li>
+								<li>La registramos con el metodo addListener de la clase eventDispatcher, en donde le
+									pasamos el nombre del evento que estara esperando escuchar y que metodo de nuestra clase
+									se ejecutara cuando se dispare este evento.
+								</li>
+							</ul>
+							</p>
+							<p>
+								Para disparar el evento se utiliza el metodo dispatch, pasando como parametro el nombre del evento.
+							</p>
+						</aside>
 					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Tiled Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-					<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
-						<div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
-							<h2>Video Backgrounds</h2>
-							<pre><code style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
-						</div>
-					</section>
-					<section data-background="http://i.giphy.com/90F8aUepslB84.gif">
-						<h2>... and GIFs!</h2>
-					</section>
-				</section>
+					<section data-markdown>
+						<script type="text/template">
+							```
+							<?php
 
-				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						Different background transitions are available via the backgroundTransition option. This one's called "zoom".
-					</p>
-					<pre><code>Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
-				</section>
+							use Symfony\Component\EventDispatcher\EventDispatcher;
 
-				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						You can override background transitions per-slide.
-					</p>
-					<pre><code style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
+							$dispatcher = new EventDispatcher();
+							$listener = new MyListener();
+
+							$dispatcher->addListener('nombre_del_evento', array(
+								$listener, 'miMetodoAction'
+							));
+
+							$dispatcher->dispatch('nombre_del_evento');
+
+							```
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							### Deteniendo el flujo/propagación del evento
+
+							En algunos casos, puede ser necesario que un listener evite que se llame a otros listeners.
+							Esto se puede lograr utilizando el metodo: stopPropagation()
+
+							```
+							<?php
+
+							use MyBundle\Event\MyEvent;
+
+							public function miMetodo(MyEvent $event)
+							{
+								// ...
+
+								$event->stopPropagation();
+
+							}
+
+							```
+							Ahora cualquier listerner de nombre_del_evento que no se haya llamado aún, no será invocado.
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							Es posible detectar si un evento fue detenido utilizando el método isPropagationStopped()
+							que devuelve un valor booleano:
+
+							```
+							<?php
+
+							// ...
+
+							$dispatcher->dispatch('nombre_del_evento', $event);
+
+							if ($event->isPropagationStopped()) {
+
+								// ...
+
+							}
+
+							```
+						</script>
+					</section>
+					<section>
+						<h3>Usando suscriptores de evento</h3>
+
+						<ul>
+							<li>
+								Implementa la interfaz: <br><br>Symfony\Component\EventDispatcher\EventSubscriberInterface <br><br>
+							</li>
+							<li>
+								Requiere un solo método estático llamado: <br><br>getSubscribedEvents.
+							</li>
+						</ul>
+						<aside class="notes">
+							<p style="text-align: justify">
+								Otra forma de escuchar eventos es a través de un suscriptor de eventos. Un suscriptor de
+								eventos es una clase PHP que es capaz de decir al despachador exactamente a cuales eventos
+								debe estar suscrito.
+							</p>
+							<p>
+								Se implementa una interfaz de la clase eventDispatcher, que requiere un solo metodo
+							</p>
+						</aside>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							### Ejemplo:
+							```
+							<?php
+
+							namespace MyBundle\Event;
+
+							use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+							use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
+
+							class myEventSubscriber implements EventSubscriberInterface
+							{
+								public static function getSubscribedEvents()
+								{
+									return array(
+										'evento.a' => array('metodoX'),
+										'evento.b' => array('metodoY'),
+									);
+								}
+
+								public function metodoX(FilterResponseEvent $event)
+								{
+									// ...
+								}
+
+								public function metodoY(FilterResponseEvent $event)
+								{
+									// ...
+								}
+							}
+
+							```
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							Para registrar un suscriptor al despachador, utiliza el método:
+
+							addSubscriber()
+
+							```
+							<?php
+
+							use MyBundle\Event\myEventSubscriber;
+
+							$subscriber = new myEventSubscriber();
+							$dispatcher->addSubscriber($subscriber);
+
+							}
+
+							```
+						</script>
+					</section>
+					<section>
+						<h3>El  método getDispatcher</h3>
+						<aside class="notes">
+							<p style="text-align: justify">
+								El EventDispatcher siempre inyecta una referencia a sí mismo en el objeto evento que se
+								le pasa. Esto significa que todos los escuchas tienen acceso directo al objeto EventDispatcher
+								a través del método getDispatcher() del objeto Event transmitido.
+							</p>
+							<p>
+								Esto es muy interesante ya que podemos despachar otro evento desde un listener
+							</p>
+						</aside>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							```
+							<?php
+
+							use Symfony\Component\EventDispatcher\Event;
+
+							class Foo
+							{
+								public function myFooListener(Event $event)
+								{
+									$event->getDispatcher()->dispatch('nombre_evento', $event);
+
+									// ...
+
+								}
+
+
+							}
+
+							```
+						</script>
+					</section>
+					<section>
+						<h3>Inyectando el EventDispatcher en tus listeners.</h3>
+
+						<ul>
+							<li>Inyección en el constructor</li>
+							<li>Inyección en el definidor:</li>
+						</ul>
+						<aside class="notes">
+							<p style="text-align: justify">
+								Si nuestra aplicación utiliza múltiples instancias del EventDispatcher, posiblemente tengamos
+								que inyectar específicamente una instancia conocida del EventDispatcher en nuestros listeners.
+								Esto se podría hacer inyectándolo en el constructor o con un definidor de la siguiente manera:
+							</p>
+						</aside>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							### Inyección en el constructor:
+
+							```
+
+
+							use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+
+							class Foo
+							{
+								protected $dispatcher = null;
+
+								public function __construct(EventDispatcherInterface $dispatcher)
+								{
+									$this->dispatcher = $dispatcher;
+								}
+							}
+
+							```
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							### Inyección en el definidor:
+
+							```
+
+
+							use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+
+							class Foo
+							{
+								protected $dispatcher = null;
+
+								public function setEventDispatcher(EventDispatcherInterface $dispatcher)
+								{
+									$this->dispatcher = $dispatcher;
+								}
+							}
+
+							```
+						</script>
+					</section>
 				</section>
 
 				<section>
-					<h2>Pretty Code</h2>
+					<section>
+						<h2>Ejemplo Practico</h2>
+						<aside class="notes">
+							<p style="text-align: justify">
+								Para explicar un poco mejor el uso de este componente, he tomado un ejemplo de nuestro
+								compa#nero manuel.
+							</p>
+							<p>
+								La idea en el ejemplo es aprobar a ciertos usuarios en una aplicación luego de que estos se han registrado,
+								además, al realizar la aprobación se quiere que le llegue un correo a dicho usuario informandole
+								que su cuenta ha sido habilitada.
+							</p>
+						</aside>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							### Clase User:
+
+							Comenzaremos con una clase que será nuestro modelo o entidad.
+
+							```
+							<?php
+
+							namespace MyBundle\Entity;
+
+							class User
+							{
+								protected $name;
+								protected $email;
+								protected $status;
+
+								// ...
+
+							}
+
+							```
+						</script>
+					</section>
+					<section>
+						<h3>Clase UserEvents:</h3>
+						<p style="text-align: justify">
+							Esta clase simplemente contendrá constantes que nos ayudarán a documentar los eventos y nos
+							permitirán usar dichas constantes en vez de strings al despachar eventos, lo que ayuda a minimizar
+							los errores al tipear.
+						</p>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							```
+							<?php
+
+							namespace MyBundle\Entity;
+
+							final class UserEvents
+							{
+								/**
+								* Este evento se ejecuta antes de cambiar el estatus del usuario
+								* a aprobado
+								*
+								* Los listener de este evento deben esperar una instancia de:
+								*
+								* Symfony\Component\EventDispatcher\GenericEvent
+								*
+								* Si alguno de los listener cancela la propagación del
+								* evento (stopPropagation()), la aprobación
+								* no se realiza, ni se llama al evento post_approve.
+								*/
+								const PRE_APPROVE = 'my_bundle.user.pre_approve';
+
+								/**
+								* Este evento se ejecuta despues de cambiar el estatus del usuario
+								* a aprobado
+								*
+								* Los listener de este evento deben esperar una instancia de:
+								*
+								* Symfony\Component\EventDispatcher\GenericEvent
+								*
+								*/
+								const POST_APPROVE = 'my_bundle.user.post_approve';
+
+							}
+
+							```
+						</script>
+					</section>
+					<section>
+						<h3>Clase UserManager:</h3>
+						<p style="text-align: justify">
+							Es una buena práctica crear un manager para nuestros modelos, y así no tener la lógica de los
+							mismos directo en los controladores (recordemos: controladores flacos, modelos gordos).
+						</p>
+						<p style="text-align: justify">
+							Para efectos de este ejemplo, nuestro manager solo tendrá un método relevante para el manejo
+							de los usuarios, el mismo tendrá por nombre approve y esperará una instancia de MyBundle\Entity\User
+							que será el usuario que aprobaremos
+						</p>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							```
+							<?php
+
+							namespace MyBundle\Model;
+
+							use MyBundle\UserEvents;
+							use MyBundle\Entity\User;
+							use Doctrine\ORM\EntityManager;
+							use Symfony\Component\EventDispatcher\GenericEvent;
+							use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+
+							class UserManager
+							{
+
+								protected $em;
+
+								protected $dispatcher;
+
+								public function __construct(
+									EntityManager $em,
+									EventDispatcherInterface $dispatcher
+								){
+									$this->em = $em;
+									$this->dispatcher = $dispatcher;
+								}
+
+								public function approve(User $user)
+								{
+									$event = new GenericEvent($user);
+									$this->dispatcher->dispatch(UserEvents::PRE_APPROVE, $event);
+
+									if ($event->isPropagationStopped()) {
+										return false; //cancelamos la aprobación
+									}
+
+									$user->setStatus(User::STATUS_APPROVED);
+									$this->em->persist($user);
+									$this->em->flush();
+
+									$event = new GenericEvent($user);
+									$this->dispatcher->dispatch(UserEvents::POST_APPROVE, $event);
+
+									return true;
+								}
+
+							}
+
+							```
+						</script>
+					</section>
+					<section>
+						<h3>Registrando el UserManager en el Container</h3>
+						<p style="text-align: justify">
+							Nuestro UserManager necesita que se le pasen dos objetos para realizar sus tareas de aprobación,
+							estos son el entity manager de doctrine y el event dispatcher de symfony, para hacer esto,
+							registraremos nuestra clase como un servicio en el contenedor y le inyectamos los servicios/objetos
+							que necesita:
+						</p>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							```
+							#  MyBundle/Resources/config/services.yml
+
+							services:
+								my_bundle.user_manager:
+									class: MyBundle\Model\UserManager
+									arguments:
+										- @doctrine.orm.default_entity_manager
+										- @event_dispatcher
+
+							```
+						</script>
+					</section>
+					<section>
+						<h3>El controlador</h3>
+						<p style="text-align: justify">
+							Ahora creamos nuestra acción en algún controlador, para que se realize el proceso de aprobación:
+						</p>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							```
+							<?php
+
+							namespace MyBundle\Controller;
+
+							use MyBundle\Entity\User;
+							use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+							use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+							class UserController extends Controller
+							{
+    								/**
+     								* @ParamConverter("user", class="MyBundle:user") usamos anotaciones :)
+     								*
+     								* @link http://symfony.com/doc/master/bundles/SensioFrameworkExtraBundle/annotations/converters.html
+     								*/
+    								public function approveAction(User $user)
+    								{
+        									if($this->get('my_bundle.user_manager')->approve($user)){
+											// enviamos un flash por ejemplo
+									}
+
+									return $this->redirect(....);
+								}
+							}
+
+							```
+						</script>
+					</section>
+					<section>
+						<h3>El Listener para el Correo</h3>
+						<p style="text-align: justify">
+							Notarán que el método approve de la clase UserManager no realiza el envío de correo al aprobar
+							al usuario, esto es porque esta tarea se la dejaremos a un listener que crearemos a continuación.
+						</p>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							```
+							<?php
+
+							namespace MyBundle\Listener;
+
+							use Symfony\Component\EventDispatcher\GenericEvent;
+
+							class SendApprovedEmailListener
+							{
+    								protected $mailer;
+
+    								public function __construct($mailer)
+    								{
+        									$this->mailer = $mailer;
+								}
+
+								/**
+								* Este método será el encargado de enviar el correo electrónico luego de
+								* que el usuario haya sido aprobado.
+								*
+								* Para más info sobre GenericEvent ver:
+								* @link http://symfony.com/doc/current/components/event_dispatcher/generic_event.html
+								*/
+								public function onPostApprove(GenericEvent $event)
+								{
+									$user = $event->getSubject(); //nos devuelve el objeto User
+
+									$message = \Swift_Message::newInstance()
+										->setSubject('Cuenta Aprobada!')
+										->setFrom($from) //lo sacamos de algún lado (container, bd, ...)
+										->setTo($user->getEmail())
+										->setBody($body); //lo sacamos de algún lado (bd, twig, ...)
+
+									$this->mailer->send($message);
+								}
+							}
+
+							```
+						</script>
+					</section>
+				<section>
+					<p>
+						Ya tenemos nuestro listener creado, ahora debemos registrarlo en el contenedor y agregarle las
+						etiquetas que lo identifiquen como un escucha de eventos:
+					</p>
 					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
 
-    var nodes = document.querySelectorAll( selector );
 
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
+#  MyBundle/Resources/config/services.yml
+services:
+	my_bundle.user_manager:
+	....
 
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
+my_bundle.listener.user.send_approved_email:
+	class: MyBundle\Listener\SendApprovedEmailListener
+	arguments:
+		- @mailer
+	tags:
+		- {name: kernel.event_listener, event: my_bundle.user.post_approve, method: onPostApprove}
+
+
 					</code></pre>
-					<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
+					<p>Gracias a la etiqueta kernel.event_listener de symfony, nuestra clase está escuchando el evento my_bundle.user.post_approve</p>
+
 				</section>
 
 				<section>
-					<h2>Marvelous List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
-
-				<section>
-					<h2>Tabular Tables</h2>
-					<table>
-						<thead>
-							<tr>
-								<th>Item</th>
-								<th>Value</th>
-								<th>Quantity</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Apples</td>
-								<td>$1</td>
-								<td>7</td>
-							<tr>
-							<tr>
-								<td>Lemonade</td>
-								<td>$2</td>
-								<td>18</td>
-							<tr>
-							<tr>
-								<td>Bread</td>
-								<td>$3</td>
-								<td>2</td>
-							<tr>
-						</tbody>
-					</table>
-				</section>
-
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
-
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Speaker View</h2>
-					<p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
-					<p>Press the <em>S</em> key to try it out.</p>
-
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
-				</section>
-
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
-					<iframe src="//www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
-				</section>
-
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the page background.
-					</p>
-				</section>
-
-				<section data-state="customevent">
-					<h2>State Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
-
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
-					</p>
-				</section>
-
-				<section>
-					<h2>Much more</h2>
-					<ul>
-						<li>Right-to-left support</li>
-						<li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
-					</ul>
-				</section>
-
-				<section style="text-align: left;">
-					<h1>THE END</h1>
-					<p>
-						- <a href="http://slides.com">Try the online editor</a> <br>
-						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
-					</p>
+					<h1>Gracias !</h1>
 				</section>
 
 			</div>
